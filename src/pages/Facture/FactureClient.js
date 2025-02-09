@@ -17,6 +17,7 @@ function Facture() {
     const [email,setEmail] = useState("")
     const [phone,setPhone] = useState("")
     const [phoneC,setPhoneC] = useState("")
+    const [invoiceType,setinvoiceType] = useState("")
     const [address,setAddress] = useState("")
     const [code,setCode] = useState("")
     const [entreprise,setEntreprise] = useState("")
@@ -68,11 +69,11 @@ function Facture() {
     </div>
     <div className="flex items-center justify-center h-full">
     <h2 className="block p-1 rounded-lg text-black">
-        Devis : {invoiceNumber}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {invoiceType} : {invoiceNumber}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
     </div>
     <hr className="my-2 border-gray-400" />
-            <Dates invoiceNumber={invoiceNumber} invoiceDate={invoiceDate} dueDate={dueDate} clientName={clientName} clientAddress={clientAddress} code={code} phoneC={phoneC} />
+            <Dates invoiceNumber={invoiceNumber} invoiceType={invoiceType} invoiceDate={invoiceDate} dueDate={dueDate} clientName={clientName} clientAddress={clientAddress} code={code} phoneC={phoneC} />
             <hr className="my-2 border-gray-400" />
             <Table description={description} price={price} quantity={quantity} amount={amount} list={list} setList={setList} somme={somme} setSomme={setSomme} somme1={somme1} setSomme1={setSomme1} vatAmount={vatAmount} setVatAmount={setVatAmount} vat20={vat20} setVat20={setVat20} Avance={Avance} setAvance={setAvance} />
             <hr className="my-2 border-gray-400" />
@@ -114,6 +115,18 @@ function Facture() {
                 <article className="md:grid grid-cols-2 gap-10 ">
                 </article>
                 <article className="md:grid grid-cols-3 gap-10 ">
+                <div className="flex flex-col" >
+               <label htmlFor="invoiceNumber">type de facture</label>
+                  <input
+                    type="text"
+                    name="invoiceNumber"
+                    id="invoiceNumber"
+                    placeholder=""
+                    autoComplete="off"
+                    value={invoiceType}
+                    onChange={(e) => setinvoiceType(e.target.value)}
+                />
+               </div>
                 <div className="flex flex-col" >
                <label htmlFor="invoiceNumber">Numéro de facture</label>
                   <input
